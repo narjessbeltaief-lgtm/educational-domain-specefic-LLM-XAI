@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Env
+.env
+
+# Data & models (kept out of git, tracked via DVC/external storage instead)
+data/raw/*
+data/processed/*
+data/vectorstore/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/vectorstore/.gitkeep
+models/
+
+# Notebooks checkpoints
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Evaluation outputs
+evaluation/results/*
+!evaluation/results/.gitkeep

@@ -1,0 +1,39 @@
+project:
+  name: xai-edu-assessment
+  version: "0.1.0"
+
+llm:
+  base_model: "meta-llama/Llama-3.1-8B-Instruct"
+  fine_tuned_path: "./models/lora-edu-assessment"
+  max_new_tokens: 512
+  temperature: 0.3
+
+peft:
+  method: lora
+  r: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
+  target_modules: ["q_proj", "v_proj"]
+
+rag:
+  backend: faiss           # faiss | chroma
+  embedding_model: "sentence-transformers/all-MiniLM-L6-v2"
+  chunk_size: 512
+  chunk_overlap: 64
+  top_k: 4
+
+explainability:
+  methods: ["shap", "lime", "captum"]
+  max_features_displayed: 10
+
+grading:
+  rubric_path: "./data/processed/rubrics.json"
+  scale: 20               # e.g. grading out of 20
+
+api:
+  host: "0.0.0.0"
+  port: 8000
+
+evaluation:
+  baseline_provider: "openai"   # comparison baseline
+  baseline_model: "gpt-4o-mini"
