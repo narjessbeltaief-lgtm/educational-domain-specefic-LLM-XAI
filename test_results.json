@@ -1,0 +1,1229 @@
+{
+  "test_info": {
+    "topic": "machine learning",
+    "n_questions": 18,
+    "n_students": 6,
+    "q_breakdown": {
+      "mcq": 10,
+      "yes_no": 8
+    }
+  },
+  "questions": [
+    {
+      "question": "What is done to region proposals before output layer?",
+      "type": "mcq",
+      "choices": [
+        "resize to input size",
+        "discard small proposals",
+        "merge overlapping proposals",
+        "apply convolutional layer"
+      ],
+      "answer": "resize to input size"
+    },
+    {
+      "question": "What is used to classify objects in region proposals?",
+      "type": "mcq",
+      "choices": [
+        "support vector machines",
+        "random forests",
+        "neural networks",
+        "k-nearest neighbors"
+      ],
+      "answer": "support vector machines"
+    },
+    {
+      "question": "What helps improve models' generalization ability?",
+      "type": "mcq",
+      "choices": [
+        "fine-tuning",
+        "data augmentation",
+        "transfer learning",
+        "regularization"
+      ],
+      "answer": "fine-tuning"
+    },
+    {
+      "question": "What is the task in hot dog recognition?",
+      "type": "mcq",
+      "choices": [
+        "image classification",
+        "object detection",
+        "segmentation",
+        "recognition"
+      ],
+      "answer": "image classification"
+    },
+    {
+      "question": "What model is fine-tuned for hot dog recognition?",
+      "type": "mcq",
+      "choices": [
+        "ResNet",
+        "VGG",
+        "Inception",
+        "DenseNet"
+      ],
+      "answer": "ResNet"
+    },
+    {
+      "question": "What dataset was the ResNet model pretrained on?",
+      "type": "mcq",
+      "choices": [
+        "ImageNet",
+        "CIFAR-10",
+        "MNIST",
+        "COCO"
+      ],
+      "answer": "ImageNet"
+    },
+    {
+      "question": "How many images are in the hot dog dataset?",
+      "type": "mcq",
+      "choices": [
+        "1000",
+        "1400",
+        "2000",
+        "5000"
+      ],
+      "answer": "1400"
+    },
+    {
+      "question": "Why is collecting more data difficult?",
+      "type": "mcq",
+      "choices": [
+        "time-consuming",
+        "costly",
+        "technically challenging",
+        "all of the above"
+      ],
+      "answer": "costly"
+    },
+    {
+      "question": "What is done to the learning rate of the optimization algorithm?",
+      "type": "mcq",
+      "choices": [
+        "multiplied by 0.9",
+        "divided by 0.9",
+        "increased by 0.1",
+        "decreased by 0.1"
+      ],
+      "answer": "multiplied by 0.9"
+    },
+    {
+      "question": "What is used to classify the testing set?",
+      "type": "mcq",
+      "choices": [
+        "trained model",
+        "validation set",
+        "testing set",
+        "labeled data"
+      ],
+      "answer": "trained model"
+    },
+    {
+      "question": "The region proposal is resized to the input size required by the network before the output layer.",
+      "type": "yes_no",
+      "choices": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes"
+    },
+    {
+      "question": "Support vector machines are used to classify objects in the region proposal.",
+      "type": "yes_no",
+      "choices": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes"
+    },
+    {
+      "question": "Fine-tuning a pre-trained model helps to improve its generalization ability.",
+      "type": "yes_no",
+      "choices": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes"
+    },
+    {
+      "question": "The hot dog recognition model is trained from scratch on the small dataset.",
+      "type": "yes_no",
+      "choices": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No"
+    },
+    {
+      "question": "The ResNet model is pre-trained on the ImageNet dataset.",
+      "type": "yes_no",
+      "choices": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes"
+    },
+    {
+      "question": "The number of epochs is a tunable hyperparameter.",
+      "type": "yes_no",
+      "choices": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes"
+    },
+    {
+      "question": "The model is trained on the entire labeled dataset, including the validation set, before classifying the testing set.",
+      "type": "yes_no",
+      "choices": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes"
+    },
+    {
+      "question": "The region proposal's extracted features and labeled bounding box are used to train the model.",
+      "type": "yes_no",
+      "choices": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes"
+    }
+  ],
+  "student_results": [
+    {
+      "student_id": "Student_A",
+      "student_name": "Alice",
+      "total_questions": 18,
+      "answers": [
+        {
+          "question_num": 1,
+          "question": "What is done to region proposals before output layer?",
+          "type": "mcq",
+          "correct_answer": "resize to input size",
+          "student_answer": "resize to input size",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 2,
+          "question": "What is used to classify objects in region proposals?",
+          "type": "mcq",
+          "correct_answer": "support vector machines",
+          "student_answer": "support vector machines",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 3,
+          "question": "What helps improve models' generalization ability?",
+          "type": "mcq",
+          "correct_answer": "fine-tuning",
+          "student_answer": "fine-tuning",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 4,
+          "question": "What is the task in hot dog recognition?",
+          "type": "mcq",
+          "correct_answer": "image classification",
+          "student_answer": "image classification",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 5,
+          "question": "What model is fine-tuned for hot dog recognition?",
+          "type": "mcq",
+          "correct_answer": "ResNet",
+          "student_answer": "ResNet",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 6,
+          "question": "What dataset was the ResNet model pretrained on?",
+          "type": "mcq",
+          "correct_answer": "ImageNet",
+          "student_answer": "ImageNet",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 7,
+          "question": "How many images are in the hot dog dataset?",
+          "type": "mcq",
+          "correct_answer": "1400",
+          "student_answer": "1400",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 8,
+          "question": "Why is collecting more data difficult?",
+          "type": "mcq",
+          "correct_answer": "costly",
+          "student_answer": "costly",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 9,
+          "question": "What is done to the learning rate of the optimization algorithm?",
+          "type": "mcq",
+          "correct_answer": "multiplied by 0.9",
+          "student_answer": "multiplied by 0.9",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 10,
+          "question": "What is used to classify the testing set?",
+          "type": "mcq",
+          "correct_answer": "trained model",
+          "student_answer": "trained model",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 11,
+          "question": "The region proposal is resized to the input size required by the network before the output layer.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "Yes",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 12,
+          "question": "Support vector machines are used to classify objects in the region proposal.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "Yes",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 13,
+          "question": "Fine-tuning a pre-trained model helps to improve its generalization ability.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "Yes",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 14,
+          "question": "The hot dog recognition model is trained from scratch on the small dataset.",
+          "type": "yes_no",
+          "correct_answer": "No",
+          "student_answer": "No",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 15,
+          "question": "The ResNet model is pre-trained on the ImageNet dataset.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "Yes",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 16,
+          "question": "The number of epochs is a tunable hyperparameter.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "Yes",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 17,
+          "question": "The model is trained on the entire labeled dataset, including the validation set, before classifying the testing set.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "No",
+          "is_correct": false,
+          "score": 0
+        },
+        {
+          "question_num": 18,
+          "question": "The region proposal's extracted features and labeled bounding box are used to train the model.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "Yes",
+          "is_correct": true,
+          "score": 10
+        }
+      ],
+      "total_score": 170,
+      "max_score": 180,
+      "percentage": 94.44
+    },
+    {
+      "student_id": "Student_B",
+      "student_name": "Bob",
+      "total_questions": 18,
+      "answers": [
+        {
+          "question_num": 1,
+          "question": "What is done to region proposals before output layer?",
+          "type": "mcq",
+          "correct_answer": "resize to input size",
+          "student_answer": "apply convolutional layer",
+          "is_correct": false,
+          "score": 0
+        },
+        {
+          "question_num": 2,
+          "question": "What is used to classify objects in region proposals?",
+          "type": "mcq",
+          "correct_answer": "support vector machines",
+          "student_answer": "support vector machines",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 3,
+          "question": "What helps improve models' generalization ability?",
+          "type": "mcq",
+          "correct_answer": "fine-tuning",
+          "student_answer": "data augmentation",
+          "is_correct": false,
+          "score": 0
+        },
+        {
+          "question_num": 4,
+          "question": "What is the task in hot dog recognition?",
+          "type": "mcq",
+          "correct_answer": "image classification",
+          "student_answer": "recognition",
+          "is_correct": false,
+          "score": 0
+        },
+        {
+          "question_num": 5,
+          "question": "What model is fine-tuned for hot dog recognition?",
+          "type": "mcq",
+          "correct_answer": "ResNet",
+          "student_answer": "ResNet",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 6,
+          "question": "What dataset was the ResNet model pretrained on?",
+          "type": "mcq",
+          "correct_answer": "ImageNet",
+          "student_answer": "CIFAR-10",
+          "is_correct": false,
+          "score": 0
+        },
+        {
+          "question_num": 7,
+          "question": "How many images are in the hot dog dataset?",
+          "type": "mcq",
+          "correct_answer": "1400",
+          "student_answer": "1400",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 8,
+          "question": "Why is collecting more data difficult?",
+          "type": "mcq",
+          "correct_answer": "costly",
+          "student_answer": "all of the above",
+          "is_correct": false,
+          "score": 0
+        },
+        {
+          "question_num": 9,
+          "question": "What is done to the learning rate of the optimization algorithm?",
+          "type": "mcq",
+          "correct_answer": "multiplied by 0.9",
+          "student_answer": "multiplied by 0.9",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 10,
+          "question": "What is used to classify the testing set?",
+          "type": "mcq",
+          "correct_answer": "trained model",
+          "student_answer": "trained model",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 11,
+          "question": "The region proposal is resized to the input size required by the network before the output layer.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "No",
+          "is_correct": false,
+          "score": 0
+        },
+        {
+          "question_num": 12,
+          "question": "Support vector machines are used to classify objects in the region proposal.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "Yes",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 13,
+          "question": "Fine-tuning a pre-trained model helps to improve its generalization ability.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "Yes",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 14,
+          "question": "The hot dog recognition model is trained from scratch on the small dataset.",
+          "type": "yes_no",
+          "correct_answer": "No",
+          "student_answer": "Yes",
+          "is_correct": false,
+          "score": 0
+        },
+        {
+          "question_num": 15,
+          "question": "The ResNet model is pre-trained on the ImageNet dataset.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "Yes",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 16,
+          "question": "The number of epochs is a tunable hyperparameter.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "Yes",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 17,
+          "question": "The model is trained on the entire labeled dataset, including the validation set, before classifying the testing set.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "No",
+          "is_correct": false,
+          "score": 0
+        },
+        {
+          "question_num": 18,
+          "question": "The region proposal's extracted features and labeled bounding box are used to train the model.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "No",
+          "is_correct": false,
+          "score": 0
+        }
+      ],
+      "total_score": 90,
+      "max_score": 180,
+      "percentage": 50.0
+    },
+    {
+      "student_id": "Student_C",
+      "student_name": "Charlie",
+      "total_questions": 18,
+      "answers": [
+        {
+          "question_num": 1,
+          "question": "What is done to region proposals before output layer?",
+          "type": "mcq",
+          "correct_answer": "resize to input size",
+          "student_answer": "resize to input size",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 2,
+          "question": "What is used to classify objects in region proposals?",
+          "type": "mcq",
+          "correct_answer": "support vector machines",
+          "student_answer": "support vector machines",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 3,
+          "question": "What helps improve models' generalization ability?",
+          "type": "mcq",
+          "correct_answer": "fine-tuning",
+          "student_answer": "fine-tuning",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 4,
+          "question": "What is the task in hot dog recognition?",
+          "type": "mcq",
+          "correct_answer": "image classification",
+          "student_answer": "image classification",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 5,
+          "question": "What model is fine-tuned for hot dog recognition?",
+          "type": "mcq",
+          "correct_answer": "ResNet",
+          "student_answer": "ResNet",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 6,
+          "question": "What dataset was the ResNet model pretrained on?",
+          "type": "mcq",
+          "correct_answer": "ImageNet",
+          "student_answer": "ImageNet",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 7,
+          "question": "How many images are in the hot dog dataset?",
+          "type": "mcq",
+          "correct_answer": "1400",
+          "student_answer": "1400",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 8,
+          "question": "Why is collecting more data difficult?",
+          "type": "mcq",
+          "correct_answer": "costly",
+          "student_answer": "costly",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 9,
+          "question": "What is done to the learning rate of the optimization algorithm?",
+          "type": "mcq",
+          "correct_answer": "multiplied by 0.9",
+          "student_answer": "multiplied by 0.9",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 10,
+          "question": "What is used to classify the testing set?",
+          "type": "mcq",
+          "correct_answer": "trained model",
+          "student_answer": "trained model",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 11,
+          "question": "The region proposal is resized to the input size required by the network before the output layer.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "No",
+          "is_correct": false,
+          "score": 0
+        },
+        {
+          "question_num": 12,
+          "question": "Support vector machines are used to classify objects in the region proposal.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "Yes",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 13,
+          "question": "Fine-tuning a pre-trained model helps to improve its generalization ability.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "Yes",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 14,
+          "question": "The hot dog recognition model is trained from scratch on the small dataset.",
+          "type": "yes_no",
+          "correct_answer": "No",
+          "student_answer": "Yes",
+          "is_correct": false,
+          "score": 0
+        },
+        {
+          "question_num": 15,
+          "question": "The ResNet model is pre-trained on the ImageNet dataset.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "Yes",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 16,
+          "question": "The number of epochs is a tunable hyperparameter.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "Yes",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 17,
+          "question": "The model is trained on the entire labeled dataset, including the validation set, before classifying the testing set.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "Yes",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 18,
+          "question": "The region proposal's extracted features and labeled bounding box are used to train the model.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "Yes",
+          "is_correct": true,
+          "score": 10
+        }
+      ],
+      "total_score": 160,
+      "max_score": 180,
+      "percentage": 88.89
+    },
+    {
+      "student_id": "Student_D",
+      "student_name": "Diana",
+      "total_questions": 18,
+      "answers": [
+        {
+          "question_num": 1,
+          "question": "What is done to region proposals before output layer?",
+          "type": "mcq",
+          "correct_answer": "resize to input size",
+          "student_answer": "merge overlapping proposals",
+          "is_correct": false,
+          "score": 0
+        },
+        {
+          "question_num": 2,
+          "question": "What is used to classify objects in region proposals?",
+          "type": "mcq",
+          "correct_answer": "support vector machines",
+          "student_answer": "k-nearest neighbors",
+          "is_correct": false,
+          "score": 0
+        },
+        {
+          "question_num": 3,
+          "question": "What helps improve models' generalization ability?",
+          "type": "mcq",
+          "correct_answer": "fine-tuning",
+          "student_answer": "fine-tuning",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 4,
+          "question": "What is the task in hot dog recognition?",
+          "type": "mcq",
+          "correct_answer": "image classification",
+          "student_answer": "image classification",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 5,
+          "question": "What model is fine-tuned for hot dog recognition?",
+          "type": "mcq",
+          "correct_answer": "ResNet",
+          "student_answer": "ResNet",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 6,
+          "question": "What dataset was the ResNet model pretrained on?",
+          "type": "mcq",
+          "correct_answer": "ImageNet",
+          "student_answer": "COCO",
+          "is_correct": false,
+          "score": 0
+        },
+        {
+          "question_num": 7,
+          "question": "How many images are in the hot dog dataset?",
+          "type": "mcq",
+          "correct_answer": "1400",
+          "student_answer": "1400",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 8,
+          "question": "Why is collecting more data difficult?",
+          "type": "mcq",
+          "correct_answer": "costly",
+          "student_answer": "costly",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 9,
+          "question": "What is done to the learning rate of the optimization algorithm?",
+          "type": "mcq",
+          "correct_answer": "multiplied by 0.9",
+          "student_answer": "multiplied by 0.9",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 10,
+          "question": "What is used to classify the testing set?",
+          "type": "mcq",
+          "correct_answer": "trained model",
+          "student_answer": "trained model",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 11,
+          "question": "The region proposal is resized to the input size required by the network before the output layer.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "Yes",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 12,
+          "question": "Support vector machines are used to classify objects in the region proposal.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "No",
+          "is_correct": false,
+          "score": 0
+        },
+        {
+          "question_num": 13,
+          "question": "Fine-tuning a pre-trained model helps to improve its generalization ability.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "No",
+          "is_correct": false,
+          "score": 0
+        },
+        {
+          "question_num": 14,
+          "question": "The hot dog recognition model is trained from scratch on the small dataset.",
+          "type": "yes_no",
+          "correct_answer": "No",
+          "student_answer": "Yes",
+          "is_correct": false,
+          "score": 0
+        },
+        {
+          "question_num": 15,
+          "question": "The ResNet model is pre-trained on the ImageNet dataset.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "Yes",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 16,
+          "question": "The number of epochs is a tunable hyperparameter.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "Yes",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 17,
+          "question": "The model is trained on the entire labeled dataset, including the validation set, before classifying the testing set.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "No",
+          "is_correct": false,
+          "score": 0
+        },
+        {
+          "question_num": 18,
+          "question": "The region proposal's extracted features and labeled bounding box are used to train the model.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "Yes",
+          "is_correct": true,
+          "score": 10
+        }
+      ],
+      "total_score": 110,
+      "max_score": 180,
+      "percentage": 61.11
+    },
+    {
+      "student_id": "Student_E",
+      "student_name": "Eve",
+      "total_questions": 18,
+      "answers": [
+        {
+          "question_num": 1,
+          "question": "What is done to region proposals before output layer?",
+          "type": "mcq",
+          "correct_answer": "resize to input size",
+          "student_answer": "discard small proposals",
+          "is_correct": false,
+          "score": 0
+        },
+        {
+          "question_num": 2,
+          "question": "What is used to classify objects in region proposals?",
+          "type": "mcq",
+          "correct_answer": "support vector machines",
+          "student_answer": "support vector machines",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 3,
+          "question": "What helps improve models' generalization ability?",
+          "type": "mcq",
+          "correct_answer": "fine-tuning",
+          "student_answer": "fine-tuning",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 4,
+          "question": "What is the task in hot dog recognition?",
+          "type": "mcq",
+          "correct_answer": "image classification",
+          "student_answer": "recognition",
+          "is_correct": false,
+          "score": 0
+        },
+        {
+          "question_num": 5,
+          "question": "What model is fine-tuned for hot dog recognition?",
+          "type": "mcq",
+          "correct_answer": "ResNet",
+          "student_answer": "VGG",
+          "is_correct": false,
+          "score": 0
+        },
+        {
+          "question_num": 6,
+          "question": "What dataset was the ResNet model pretrained on?",
+          "type": "mcq",
+          "correct_answer": "ImageNet",
+          "student_answer": "COCO",
+          "is_correct": false,
+          "score": 0
+        },
+        {
+          "question_num": 7,
+          "question": "How many images are in the hot dog dataset?",
+          "type": "mcq",
+          "correct_answer": "1400",
+          "student_answer": "5000",
+          "is_correct": false,
+          "score": 0
+        },
+        {
+          "question_num": 8,
+          "question": "Why is collecting more data difficult?",
+          "type": "mcq",
+          "correct_answer": "costly",
+          "student_answer": "costly",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 9,
+          "question": "What is done to the learning rate of the optimization algorithm?",
+          "type": "mcq",
+          "correct_answer": "multiplied by 0.9",
+          "student_answer": "multiplied by 0.9",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 10,
+          "question": "What is used to classify the testing set?",
+          "type": "mcq",
+          "correct_answer": "trained model",
+          "student_answer": "validation set",
+          "is_correct": false,
+          "score": 0
+        },
+        {
+          "question_num": 11,
+          "question": "The region proposal is resized to the input size required by the network before the output layer.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "Yes",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 12,
+          "question": "Support vector machines are used to classify objects in the region proposal.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "Yes",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 13,
+          "question": "Fine-tuning a pre-trained model helps to improve its generalization ability.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "Yes",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 14,
+          "question": "The hot dog recognition model is trained from scratch on the small dataset.",
+          "type": "yes_no",
+          "correct_answer": "No",
+          "student_answer": "No",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 15,
+          "question": "The ResNet model is pre-trained on the ImageNet dataset.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "No",
+          "is_correct": false,
+          "score": 0
+        },
+        {
+          "question_num": 16,
+          "question": "The number of epochs is a tunable hyperparameter.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "Yes",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 17,
+          "question": "The model is trained on the entire labeled dataset, including the validation set, before classifying the testing set.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "No",
+          "is_correct": false,
+          "score": 0
+        },
+        {
+          "question_num": 18,
+          "question": "The region proposal's extracted features and labeled bounding box are used to train the model.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "Yes",
+          "is_correct": true,
+          "score": 10
+        }
+      ],
+      "total_score": 100,
+      "max_score": 180,
+      "percentage": 55.56
+    },
+    {
+      "student_id": "Student_F",
+      "student_name": "Frank",
+      "total_questions": 18,
+      "answers": [
+        {
+          "question_num": 1,
+          "question": "What is done to region proposals before output layer?",
+          "type": "mcq",
+          "correct_answer": "resize to input size",
+          "student_answer": "resize to input size",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 2,
+          "question": "What is used to classify objects in region proposals?",
+          "type": "mcq",
+          "correct_answer": "support vector machines",
+          "student_answer": "support vector machines",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 3,
+          "question": "What helps improve models' generalization ability?",
+          "type": "mcq",
+          "correct_answer": "fine-tuning",
+          "student_answer": "regularization",
+          "is_correct": false,
+          "score": 0
+        },
+        {
+          "question_num": 4,
+          "question": "What is the task in hot dog recognition?",
+          "type": "mcq",
+          "correct_answer": "image classification",
+          "student_answer": "image classification",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 5,
+          "question": "What model is fine-tuned for hot dog recognition?",
+          "type": "mcq",
+          "correct_answer": "ResNet",
+          "student_answer": "ResNet",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 6,
+          "question": "What dataset was the ResNet model pretrained on?",
+          "type": "mcq",
+          "correct_answer": "ImageNet",
+          "student_answer": "COCO",
+          "is_correct": false,
+          "score": 0
+        },
+        {
+          "question_num": 7,
+          "question": "How many images are in the hot dog dataset?",
+          "type": "mcq",
+          "correct_answer": "1400",
+          "student_answer": "1400",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 8,
+          "question": "Why is collecting more data difficult?",
+          "type": "mcq",
+          "correct_answer": "costly",
+          "student_answer": "time-consuming",
+          "is_correct": false,
+          "score": 0
+        },
+        {
+          "question_num": 9,
+          "question": "What is done to the learning rate of the optimization algorithm?",
+          "type": "mcq",
+          "correct_answer": "multiplied by 0.9",
+          "student_answer": "divided by 0.9",
+          "is_correct": false,
+          "score": 0
+        },
+        {
+          "question_num": 10,
+          "question": "What is used to classify the testing set?",
+          "type": "mcq",
+          "correct_answer": "trained model",
+          "student_answer": "trained model",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 11,
+          "question": "The region proposal is resized to the input size required by the network before the output layer.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "Yes",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 12,
+          "question": "Support vector machines are used to classify objects in the region proposal.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "No",
+          "is_correct": false,
+          "score": 0
+        },
+        {
+          "question_num": 13,
+          "question": "Fine-tuning a pre-trained model helps to improve its generalization ability.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "Yes",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 14,
+          "question": "The hot dog recognition model is trained from scratch on the small dataset.",
+          "type": "yes_no",
+          "correct_answer": "No",
+          "student_answer": "No",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 15,
+          "question": "The ResNet model is pre-trained on the ImageNet dataset.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "No",
+          "is_correct": false,
+          "score": 0
+        },
+        {
+          "question_num": 16,
+          "question": "The number of epochs is a tunable hyperparameter.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "Yes",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 17,
+          "question": "The model is trained on the entire labeled dataset, including the validation set, before classifying the testing set.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "Yes",
+          "is_correct": true,
+          "score": 10
+        },
+        {
+          "question_num": 18,
+          "question": "The region proposal's extracted features and labeled bounding box are used to train the model.",
+          "type": "yes_no",
+          "correct_answer": "Yes",
+          "student_answer": "No",
+          "is_correct": false,
+          "score": 0
+        }
+      ],
+      "total_score": 110,
+      "max_score": 180,
+      "percentage": 61.11
+    }
+  ]
+}
