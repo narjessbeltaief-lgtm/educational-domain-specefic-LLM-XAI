@@ -1,8 +1,10 @@
 """Endpoints for the question generation engine."""
 
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 
 from src.api.schemas import GenerateQuestionsRequest, GenerateQuestionsResponse
+from src.generation.question_generator import generate_questions
+from src.utils.config_loader import load_config
 
 router = APIRouter()
 
@@ -10,4 +12,11 @@ router = APIRouter()
 @router.post("/", response_model=GenerateQuestionsResponse)
 def generate_questions_endpoint(request: GenerateQuestionsRequest):
     """Generate `n_questions` pedagogically relevant questions for `topic`."""
-    raise NotImplementedError("TODO: call src.generation.question_generator.generate_questions")
+    try:
+        cfg = load_config()
+        questions = generate_questions(
+            topic=request.topic, n_questions=request.n_questions, config=cfg
+        )
+        return GenerateQuestionsResponse(questions=questions)
+    except Exception as e:
+        raise HTTPException(status_code=502, detail=str(e))
