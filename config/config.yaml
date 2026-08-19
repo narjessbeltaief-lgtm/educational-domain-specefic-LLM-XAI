@@ -3,10 +3,19 @@ project:
   version: "0.1.0"
 
 llm:
+  # Active backend used by src/llm/groq_client.py for generation + grading.
+  # Reads GROQ_API_KEY from the environment (.env). If unset, the app falls
+  # back to a deterministic offline generator/grader (see generation/
+  # question_generator.py and grading/auto_grader.py) so the API and UI
+  # stay usable without an API key.
+  provider: "groq"
+  groq_model: "llama-3.3-70b-versatile"
+  max_new_tokens: 1024
+  temperature: 0.3
+  # Fine-tuning target (Phase 2 — requires GPU access, not yet run/trained).
+  # See src/llm/fine_tuning.py.
   base_model: "meta-llama/Llama-3.1-8B-Instruct"
   fine_tuned_path: "./models/lora-edu-assessment"
-  max_new_tokens: 512
-  temperature: 0.3
 
 peft:
   method: lora
@@ -16,10 +25,14 @@ peft:
   target_modules: ["q_proj", "v_proj"]
 
 rag:
-  backend: faiss           # faiss | chroma
-  embedding_model: "sentence-transformers/all-MiniLM-L6-v2"
-  chunk_size: 512
-  chunk_overlap: 64
+  # Active backend: tfidf (scikit-learn, no model download, CPU-only,
+  # implemented in src/rag/indexer.py + retriever.py). faiss/chroma are
+  # listed as a future upgrade path once embedding-model downloads are
+  # available in the deployment environment.
+  backend: tfidf            # tfidf (active) | faiss | chroma (future)
+  embedding_model: "sentence-transformers/all-MiniLM-L6-v2"  # used only if backend=faiss/chroma
+  chunk_size: 300            # words per chunk
+  chunk_overlap: 50          # words of overlap between chunks
   top_k: 4
 
 explainability:

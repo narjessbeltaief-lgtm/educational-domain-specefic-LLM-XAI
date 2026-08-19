@@ -436,13 +436,14 @@
                     </div>
 
                     <div class="input-group">
-                        <label for="courseText">Course Material</label>
+                        <label for="courseText">Course Material (paste text) — or upload a PDF below instead</label>
                         <textarea id="courseText" rows="8" placeholder="Paste course text here, or a chapter summary"></textarea>
                     </div>
 
                     <div class="input-group">
-                        <label for="courseName">Course Name</label>
-                        <input type="text" id="courseName" value="Data Structures" placeholder="e.g., Calculus, World History, Java Programming">
+                        <label for="coursePdf">…or upload a course PDF</label>
+                        <input type="file" id="coursePdf" accept="application/pdf" onchange="onPdfSelected()">
+                        <div id="pdfFileName" style="font-size:0.85rem; color:#555; margin-top:4px;"></div>
                     </div>
 
                     <div class="input-group">
@@ -486,7 +487,7 @@
                 <div class="button-row">
                     <button class="btn-danger" onclick="cancelTest()">❌ Cancel Test</button>
                     <button class="btn-success" id="submitBtn" onclick="submitAnswer()" style="display: none;">✓ Next Question</button>
-                    <button class="btn-success" id="finishBtn" onclick="finishTest()" style="display: none;">🏁 Finish Test</button>
+                    <button class="btn-success" id="finishBtn" onclick="submitAnswer()" style="display: none;">🏁 Finish Test</button>
                 </div>
 
                 <div id="testError"></div>
@@ -513,6 +514,7 @@
                                 <th>Your Answer</th>
                                 <th>Correct Answer</th>
                                 <th>Result</th>
+                                <th>Why</th>
                             </tr>
                         </thead>
                         <tbody id="resultsBody">
@@ -534,25 +536,33 @@
         let currentQuestion = 0;
         let answers = [];
 
+        function onPdfSelected() {
+            const fileInput = document.getElementById('coursePdf');
+            const label = document.getElementById('pdfFileName');
+            if (fileInput.files.length) {
+                label.textContent = `Selected: ${fileInput.files[0].name} (will be used instead of pasted text)`;
+            } else {
+                label.textContent = '';
+            }
+        }
+
         async function startTest() {
             const studentName = document.getElementById('studentName').value.trim();
-            const courseName = document.getElementById('courseName').value.trim();
             const courseText = document.getElementById('courseText').value.trim();
+            const pdfFile = document.getElementById('coursePdf').files[0];
             const numQuestions = parseInt(document.getElementById('numQuestions').value);
             const mcqRatio = parseFloat(document.getElementById('mcqRatio').value);
+            const courseName = pdfFile
+                ? (pdfFile.name.replace(/\.pdf$/i, '').trim() || 'Uploaded PDF Course')
+                : 'Course Material';
 
             if (!studentName) {
                 showError('welcomeError', 'Please enter your name');
                 return;
             }
 
-            if (!courseName) {
-                showError('welcomeError', 'Please enter a course name');
-                return;
-            }
-
-            if (!courseText) {
-                showError('welcomeError', 'Please paste the course material');
+            if (!pdfFile && !courseText) {
+                showError('welcomeError', 'Please paste course material or upload a course PDF');
                 return;
             }
 
@@ -560,19 +570,37 @@
             document.getElementById('testError').innerHTML = '';
 
             try {
-                const response = await fetch(`${API_URL}/generate`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        course_name: courseName,
-                        course_text: courseText,
-                        n_questions: numQuestions,
-                        mcq_ratio: mcqRatio
-                    })
-                });
+                let response;
+                if (pdfFile) {
+                    // PDF upload path: extract + generate in one call.
+                    const formData = new FormData();
+                    formData.append('course_name', courseName);
+                    formData.append('n_questions', numQuestions);
+                    formData.append('mcq_ratio', mcqRatio);
+                    formData.append('allow_open', 'false');
+                    formData.append('file', pdfFile);
+
+                    response = await fetch(`${API_URL}/generate-from-pdf`, {
+                        method: 'POST',
+                        body: formData
+                    });
+                } else {
+                    response = await fetch(`${API_URL}/generate`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            course_name: courseName,
+                            course_text: courseText,
+                            n_questions: numQuestions,
+                            mcq_ratio: mcqRatio,
+                            allow_open: false
+                        })
+                    });
+                }
 
                 if (!response.ok) {
-                    throw new Error('Failed to generate test');
+                    const errBody = await response.json().catch(() => ({}));
+                    throw new Error(errBody.detail || 'Failed to generate test');
                 }
 
                 const data = await response.json();
@@ -608,19 +636,29 @@
 
             let html = `<div class="question-counter">Question ${currentQuestion + 1} of ${total}</div>`;
             html += `<div class="question-text">${question.question}</div>`;
-            html += `<div class="choices">`;
 
-            question.choices.forEach((choice, idx) => {
-                const id = `choice-${idx}`;
+            if (question.choices && question.choices.length) {
+                html += `<div class="choices">`;
+                question.choices.forEach((choice, idx) => {
+                    const id = `choice-${idx}`;
+                    html += `
+                        <div class="choice-option">
+                            <input type="radio" id="${id}" name="answer" value="${choice}" onchange="updateSubmitButton()">
+                            <label for="${id}">${choice}</label>
+                        </div>
+                    `;
+                });
+                html += `</div>`;
+            } else {
+                // Open-ended question: free-text answer, graded semantically server-side.
                 html += `
-                    <div class="choice-option">
-                        <input type="radio" id="${id}" name="answer" value="${choice}" onchange="updateSubmitButton()">
-                        <label for="${id}">${choice}</label>
+                    <div class="choices">
+                        <textarea id="openAnswer" rows="4" style="width:100%; font-family:inherit; font-size:1rem; padding:0.75rem; border-radius:8px; border:1px solid #ccc;"
+                            placeholder="Type your answer here..." oninput="updateSubmitButton()"></textarea>
                     </div>
                 `;
-            });
+            }
 
-            html += `</div>`;
             document.getElementById('testContent').innerHTML = html;
 
             document.getElementById('submitBtn').style.display = 'inline-block';
@@ -634,17 +672,24 @@
             updateSubmitButton();
         }
 
-        function updateSubmitButton() {
+        function getCurrentAnswer() {
             const selected = document.querySelector('input[name="answer"]:checked');
-            document.getElementById('submitBtn').disabled = !selected;
-            document.getElementById('finishBtn').disabled = !selected;
+            if (selected) return selected.value;
+            const openField = document.getElementById('openAnswer');
+            if (openField) return openField.value.trim();
+            return null;
+        }
+
+        function updateSubmitButton() {
+            const answer = getCurrentAnswer();
+            const hasAnswer = !!(answer && answer.length);
+            document.getElementById('submitBtn').disabled = !hasAnswer;
+            document.getElementById('finishBtn').disabled = !hasAnswer;
         }
 
         async function submitAnswer() {
-            const selected = document.querySelector('input[name="answer"]:checked');
-            if (!selected) return;
-
-            const answer = selected.value;
+            const answer = getCurrentAnswer();
+            if (!answer) return;
             showLoading('testContent');
 
             try {
@@ -715,6 +760,7 @@
                         <td>${ans.student_answer || 'Not answered'}</td>
                         <td>${ans.correct_answer}</td>
                         <td class="${resultClass}">${resultText}</td>
+                        <td style="font-size:0.85rem; color:#555; max-width:260px;">${ans.justification || ''}</td>
                     </tr>
                 `;
             });
