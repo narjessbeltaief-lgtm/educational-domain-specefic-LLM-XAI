@@ -785,8 +785,10 @@ def generate_questions(
     history_key = _course_history_key(topic, course_text, course_id)
     with _HISTORY_LOCK:
         history = _load_question_history()
-        course_history = history.setdefault("courses", {}).setdefault(history_key, {"stems": []})
-        seen_questions = set(course_history.get("stems", []))
+        course_history = history.setdefault("courses", {}).setdefault(history_key, {"session_index": 0})
+        session_index = int(course_history.get("session_index", 0)) + 1
+        course_history["session_index"] = session_index
+        _save_question_history(history)
 
     if groq_client.is_available():
         try:
@@ -811,11 +813,10 @@ def generate_questions(
                     mcq_ratio,
                     course_text=course_text,
                     allow_open=allow_open,
-                    variant_salt=f"{history_key}:{attempt}",
+                    variant_salt=f"{history_key}:{session_index}:{attempt}",
                 )
-                for question in _unique_new_questions(candidate_questions, seen_questions):
+                for question in candidate_questions:
                     generated_questions.append(question)
-                    seen_questions.add(_normalize_question_stem(str(question.get("question", ""))))
                     if len(generated_questions) >= n_questions:
                         break
                 if len(generated_questions) >= n_questions:
@@ -830,27 +831,15 @@ def generate_questions(
                 mcq_ratio,
                 course_text=course_text,
                 allow_open=allow_open,
-                variant_salt=f"{history_key}:{attempt}",
+                variant_salt=f"{history_key}:{session_index}:{attempt}",
             )
-            for question in _unique_new_questions(candidate_questions, seen_questions):
+            for question in candidate_questions:
                 generated_questions.append(question)
-                seen_questions.add(_normalize_question_stem(str(question.get("question", ""))))
                 if len(generated_questions) >= n_questions:
                     break
             if len(generated_questions) >= n_questions:
                 break
 
     generated_questions = generated_questions[:n_questions]
-
-    with _HISTORY_LOCK:
-        history = _load_question_history()
-        course_history = history.setdefault("courses", {}).setdefault(history_key, {"stems": []})
-        stored_stems = set(course_history.get("stems", []))
-        for question in generated_questions:
-            stem = _normalize_question_stem(str(question.get("question", "")))
-            if stem:
-                stored_stems.add(stem)
-        course_history["stems"] = sorted(stored_stems)
-        _save_question_history(history)
 
     return generated_questions
