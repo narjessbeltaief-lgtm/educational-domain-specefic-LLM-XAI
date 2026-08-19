@@ -70,32 +70,54 @@ def _generate_test(
     )
 
     test_id = uuid4().hex[:8]
-        }
+    _tests[test_id] = {
+        "test_id": test_id,
+        "course_id": course_id,
+        "course_name": course_name,
+        "course_text": course_text,
+        "n_questions": len(questions),
+        "questions": questions,
+    }
+
+    return {
+        "test_id": test_id,
+        "course_id": course_id,
+        "course_name": course_name,
+        "n_questions": len(questions),
+        "questions": questions,
+        "grounded_in_course_material": bool(course_text.strip()),
+    }
 
 
-    @router.get("/status/{test_id}")
-    def get_test_status(test_id: str):
-        """Return completion progress across all students for a test."""
-        test = _tests.get(test_id)
-        if not test:
-            raise HTTPException(status_code=404, detail="Unknown test_id")
+@router.post("/generate")
+def generate_test(request: GenerateTestRequest):
+    """Generate an interactive test from pasted course material."""
+    try:
+        return _generate_test(
+            course_name=request.course_name,
+            course_text=request.course_text,
+            n_questions=request.n_questions,
+            mcq_ratio=request.mcq_ratio,
+            generation_prompt=request.generation_prompt,
+            allow_open=request.allow_open,
+        )
+    except HTTPException:
+        raise
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(status_code=502, detail=f"Could not generate test: {exc}")
 
-        answered_count = sum(len(records) for records in _answers[test_id].values())
-        total_questions = len(test["questions"])
-        remaining = max(total_questions - answered_count, 0)
 
-        return {
-            "test_id": test_id,
-            "course_name": test["course_name"],
-            "progress": f"{min(answered_count, total_questions)}/{total_questions}",
-            "remaining": remaining,
-        }
+@router.post("/upload-course")
+async def upload_course_pdf(
+    course_name: str,
+    file: UploadFile = File(...),
+):
+    """Upload a PDF and extract text, returning a course_id for later use."""
+    _assert_pdf(file)
+    payload = await file.read()
 
-
-    @router.get("/{test_id}")
-    def get_test_status_alias(test_id: str):
-        """Backward-compatible alias for fetching test status."""
-        return get_test_status(test_id)
+    try:
+        text = extract_text_from_pdf(payload)
     except PDFExtractionError as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
 
@@ -214,7 +236,7 @@ def get_results(test_id: str, student_name: str):
         "percentage": percentage,
         "answers": answers,
     }
-    
+
 
 @router.get("/status/{test_id}")
 def get_test_status(test_id: str):

@@ -26,6 +26,14 @@ class GradeRequest(BaseModel):
     rubric: dict
 
 
+class ExplanationInput(BaseModel):
+    question: str
+    student_answer: str
+    correct_answer: Optional[str] = None
+    score: Optional[float] = None
+    method: str = "shap"  # shap | lime | captum
+
+
 class GradeResponse(BaseModel):
     score: float
     justification: str
@@ -33,7 +41,10 @@ class GradeResponse(BaseModel):
 
 
 class ExplainRequest(BaseModel):
-    text: str
+    question: str
+    student_answer: str
+    correct_answer: Optional[str] = None
+    score: Optional[float] = None
     method: str = "shap"  # shap | lime | captum
 
 
